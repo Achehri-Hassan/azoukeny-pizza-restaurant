@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import Categories from './components/Categories'
 import Menu from './components/Menu'
+import Testimonials from './components/Testimonials'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
     <Hero/>
     <Categories/>
     <Menu/>
+    <Testimonials/>
       
      
      
