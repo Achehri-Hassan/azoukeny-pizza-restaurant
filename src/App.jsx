@@ -7,6 +7,7 @@ import Hero from './components/Hero'
 import Categories from './components/Categories'
 import Menu from './components/Menu'
 import Testimonials from './components/Testimonials'
+import Contact from './components/Contact'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
     <Categories/>
     <Menu/>
     <Testimonials/>
+    <Contact/>
       
      
      
