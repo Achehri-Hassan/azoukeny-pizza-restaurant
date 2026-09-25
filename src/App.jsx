@@ -8,13 +8,15 @@ import Categories from './components/Categories'
 import Menu from './components/Menu'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
+import { CartProvider } from "./context/CartContext";
+
 
 function App() {
   return (
      <>
       
 
-
+     <CartProvider>
     <NavBar/>
     <Hero/>
     <Categories/>
@@ -24,6 +26,8 @@ function App() {
       
      
      
+     </CartProvider>
+
      </>
   )
 }

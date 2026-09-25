@@ -1,5 +1,6 @@
 import { useState } from "react";
-import assets from "../assets/assets"; 
+import assets from "../assets/assets";
+import { useCart } from "../context/CartContext";
 
 
 const svgProps = {
@@ -42,6 +43,18 @@ const CartIcon = ({ className }) => (
   </svg>
 );
 
+const CloseIcon = ({ className }) => (
+  <svg {...svgProps} className={className}>
+    <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+);
+
+const MinusIcon = ({ className }) => (
+  <svg {...svgProps} className={className}>
+    <path d="M5 12h14" />
+  </svg>
+);
+
 
 
 const tabs = [
@@ -63,8 +76,11 @@ const items = [
 ];
 
 /* ---------- card ---------- */
-const MenuCard = ({ item, onAddToCart }) => (
-  <section className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-md">
+const MenuCard = ({ item, onAddToCart, onOpen }) => (
+  <section
+    onClick={() => onOpen(item)}
+    className="flex cursor-pointer items-center gap-4 rounded-2xl bg-white p-4 shadow-md transition-transform hover:-translate-y-0.5 hover:shadow-lg"
+  >
     <img
       src={item.image}
       alt={item.name}
@@ -79,7 +95,10 @@ const MenuCard = ({ item, onAddToCart }) => (
 
       <button
         type="button"
-        onClick={() => onAddToCart(item)}
+        onClick={(e) => {
+          e.stopPropagation(); // don't trigger the card's onOpen
+          onAddToCart(item);
+        }}
         className="mt-1 inline-flex items-center gap-1.5 self-end rounded-lg bg-[#c4161c] px-3 py-1.5 text-xs font-medium text-white transition-colors hover: focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4161c]"
       >
         <CartIcon className="h-4 w-4" />
@@ -89,15 +108,23 @@ const MenuCard = ({ item, onAddToCart }) => (
   </section>
 );
 
+
+
 /* ---------- section ---------- */
-const Menu = ({ onAddToCart = () => {} }) => {
+const Menu = () => {
+  const { addToCart } = useCart();
   const [active, setActive] = useState("all");
+  const [selectedItem, setSelectedItem] = useState(null);
   const visible = active === "all" ? items : items.filter((i) => i.category === active);
+
+  const handleModalAdd = (item, qty) => {
+    addToCart(item, qty);
+  };
 
   return (
     <section
       id="menu"
-      className="relative -top-44 overflow-hidden bg-[#bb0d11] pb-32 font-['Lexend'] text-white"
+      className="relative  overflow-hidden bg-[#bb0d11] pb-32 font-['Lexend'] text-white"
     >
     
       <div className="absolute left-0 top-0 flex h-28 w-28 items-center justify-center rounded-br-[3rem] bg-white sm:h-40 sm:w-40 md:h-48 md:w-52 md:rounded-br-[5rem]">
@@ -150,9 +177,16 @@ const Menu = ({ onAddToCart = () => {} }) => {
       {/* cards */}
       <div className=" mx-auto mt-10 grid max-w-6xl gap-5 px-4 md:grid-cols-2 lg:grid-cols-3">
         {visible.map((item) => (
-          <MenuCard key={item.id} item={item} onAddToCart={onAddToCart} />
+          <MenuCard
+            key={item.id}
+            item={item}
+            onAddToCart={(i) => addToCart(i, 1)}
+            onOpen={setSelectedItem}
+          />
         ))}
       </div>
+
+    
 
       {/* tomato, bottom right */}
       <img
