@@ -58,14 +58,14 @@ function Hero() {
       </div>
 
       {/* Stats: NO white box on desktop, the white shape is already in the image */}
-      <div className="relative z-10 mx-6 mb-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 rounded-3xl bg-white p-5 shadow-lg lg:absolute lg:left-[2.8%] lg:top-[76.3%] lg:m-0 lg:flex-nowrap lg:justify-start lg:gap-[1.1vw] lg:rounded-none lg:bg-transparent lg:p-0 lg:shadow-none">
+    <div className="relative z-10 mx-6 mb-10 flex flex-col items-start gap-y-4 rounded-3xl bg-white p-5 shadow-lg md:flex-row md:items-center md:justify-between md:px-8 lg:absolute lg:left-[2.8%] lg:top-[76.3%] lg:m-0 lg:justify-start lg:gap-[1.1vw] lg:rounded-none lg:bg-transparent lg:p-0 lg:shadow-none">
         {stats.map((s, i) => (
           <React.Fragment key={s.label}>
             {i > 0 && (
-              <div className="hidden w-px bg-gray-300 lg:block lg:h-[4.4vw]" />
+               <div className="hidden w-px bg-gray-300 md:block md:h-12 lg:h-[4.4vw]" />
             )}
 
-            <div className="flex items-center gap-3 lg:gap-[1.1vw]">
+            <div className="flex  items-center gap-3 lg:gap-[1.1vw]">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#cc181d] text-white lg:h-[2.9vw] lg:w-[2.9vw] lg:text-[1.2vw]">
                 <i className={`fa-solid ${s.icon}`} />
               </div>

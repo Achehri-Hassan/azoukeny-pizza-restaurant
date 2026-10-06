@@ -124,7 +124,7 @@ const Menu = () => {
   return (
     <section
       id="menu"
-      className="relative  overflow-hidden bg-[#bb0d11] pb-32 font-['Lexend'] text-white"
+      className=" relative z-10   overflow-hidden bg-[#bb0d11] pb-32 font-['Lexend'] text-white"
     >
     
       <div className="absolute left-0 top-0 flex h-28 w-28 items-center justify-center rounded-br-[3rem] bg-white sm:h-40 sm:w-40 md:h-48 md:w-52 md:rounded-br-[5rem]">

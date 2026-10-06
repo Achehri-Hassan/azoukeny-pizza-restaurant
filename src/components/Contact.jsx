@@ -40,7 +40,7 @@ const Row = ({ icon, label, href, external }) => (
 
 /* ---------- section ---------- */
 const Contact = () => (
-  <section id="contact" className="bg-white font-['Lexend']  relative -top-72 ">
+  <section id="contact" className="bg-white font-['Lexend']   ">
     <div className="grid md:grid-cols-2">
     
       <div className="flex flex-col justify-center px-6 py-12 sm:px-12 lg:px-20">

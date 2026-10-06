@@ -60,7 +60,7 @@ const Testimonials = () => {
     "flex h-12 w-12 items-center justify-center rounded-full bg-[#c4161c] text-white transition-colors hover:bg-[#9e1015] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4161c]";
 
   return (
-    <section id="reviews" className="relative -top-72 bg-white px-4 py-16 font-['Lexend'] md:py-24">
+    <section id="reviews" className="relative z-0 -mt-16 rounded-t-[3rem] bg-white px-4 py-16 font-['Lexend'] md:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[22rem_1fr] md:gap-12 lg:grid-cols-[26rem_1fr] lg:gap-16">
         {/* customer photo */}
         <img
