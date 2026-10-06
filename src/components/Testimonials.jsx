@@ -60,17 +60,18 @@ const Testimonials = () => {
     "flex h-12 w-12 items-center justify-center rounded-full bg-[#c4161c] text-white transition-colors hover:bg-[#9e1015] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4161c]";
 
   return (
-    <section id="reviews" className="relative z-0 -mt-16 rounded-t-[3rem] bg-white px-4 py-16 font-['Lexend'] md:py-24">
+    <section id="reviews" className="relative z-0 -mt-16 overflow-hidden rounded-t-[3rem] bg-white px-4 py-16 font-['Lexend'] md:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[22rem_1fr] md:gap-12 lg:grid-cols-[26rem_1fr] lg:gap-16">
         {/* customer photo */}
         <img
           src={assets.customers}
           alt="Happy customer holding a slice of pizza"
+          data-aos="fade-right"
           className="mx-auto aspect-square w-full max-w-sm rounded-full object-cover md:max-w-none"
         />
 
         {/* text side */}
-        <div>
+        <div data-aos="fade-left">
           <h2 className=" mt-1 font-['Anton'] text-5xl leading-none tracking-wide  md:text-4xl lg:text-5xl xl:text-6xl text-[#c4161c] ">
             What our customers say
           </h2>

@@ -1,15 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import Categories from './components/Categories'
 import Menu from './components/Menu'
+
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Checkout from './components/Checkout'
 import { CartProvider } from "./context/CartContext"
 
+// Scroll animations: run once, and skip them if the user prefers reduced motion
+AOS.init({
+  duration: 700,
+  easing: 'ease-out-cubic',
+  once: true,
+  offset: 80,
+  disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+})
+
 function App() {
   const [page, setPage] = useState('home') // 'home' | 'checkout'
+
+  // Sections are mounted again when we come back from checkout: scan them
+  useEffect(() => {
+    const t = setTimeout(() => AOS.refreshHard(), 100)
+    return () => clearTimeout(t)
+  }, [page])
 
   const goCheckout = () => {
     setPage('checkout')

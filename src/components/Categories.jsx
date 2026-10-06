@@ -135,8 +135,10 @@ const CategoryCard = ({ title, tagline, subtitle, image, Icon, href }) => (
 const Categories = () => (
   <section id="categories" className="bg-neutral-50 px-4 py-12 md:py-16">
     <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-      {categories.map(({ id, ...card }) => (
-        <CategoryCard key={id} {...card} />
+      {categories.map(({ id, ...card }, i) => (
+        <div key={id} data-aos="fade-up" data-aos-delay={i * 100} className="h-full">
+          <CategoryCard {...card} />
+        </div>
       ))}
     </div>
   </section>

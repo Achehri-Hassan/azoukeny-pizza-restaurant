@@ -1,4 +1,3 @@
-
 const contact = {
   intro:
     "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, nulla nemo illum commodi quas repellat?",
@@ -40,10 +39,10 @@ const Row = ({ icon, label, href, external }) => (
 
 /* ---------- section ---------- */
 const Contact = () => (
-  <section id="contact" className="bg-white font-['Lexend']   ">
+  <section id="contact" className="overflow-hidden bg-white font-['Lexend']">
     <div className="grid md:grid-cols-2">
     
-      <div className="flex flex-col justify-center px-6 py-12 sm:px-12 lg:px-20">
+      <div data-aos="fade-right" className="flex flex-col justify-center px-6 py-12 sm:px-12 lg:px-20">
         <h2 className="mt-1 font-['Anton'] text-5xl leading-none tracking-wide  md:text-4xl lg:text-5xl xl:text-6xl text-[var(--pimary-color)]">Contact Us</h2>
         <p className="mt-5 max-w-md text-base font-medium leading-snug text-neutral-900 ">
           {contact.intro}
@@ -72,6 +71,7 @@ const Contact = () => (
      
       <iframe
         title="Restaurant location"
+        data-aos="fade-left"
         src={MAP_SRC}
         loading="lazy"
         allowFullScreen

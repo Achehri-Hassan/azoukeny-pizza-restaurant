@@ -23,7 +23,7 @@ function Hero() {
       <div className="absolute inset-0 bg-[#a0060c]/15 lg:hidden" />
 
       {/* Text block */}
-      <div className="relative z-10 px-6 pb-10 pt-16 lg:absolute lg:left-[30.4%] lg:top-[20%] lg:p-0">
+      <div data-aos="fade-up" className="relative z-10 px-6 pb-10 pt-16 lg:absolute lg:left-[30.4%] lg:top-[20%] lg:p-0">
         <h1 className="mt-1 font-['Anton'] text-5xl leading-none tracking-wide text-white md:text-4xl lg:text-5xl xl:text-6xl">
           Authentic Italian Pizza
         </h1>
@@ -58,7 +58,7 @@ function Hero() {
       </div>
 
       {/* Stats: NO white box on desktop, the white shape is already in the image */}
-    <div className="relative z-10 mx-6 mb-10 flex flex-col items-start gap-y-4 rounded-3xl bg-white p-5 shadow-lg md:flex-row md:items-center md:justify-between md:px-8 lg:absolute lg:left-[2.8%] lg:top-[76.3%] lg:m-0 lg:justify-start lg:gap-[1.1vw] lg:rounded-none lg:bg-transparent lg:p-0 lg:shadow-none">
+    <div data-aos="fade-up" data-aos-delay="200" className="relative z-10 mx-6 mb-10 flex flex-col items-start gap-y-4 rounded-3xl bg-white p-5 shadow-lg md:flex-row md:items-center md:justify-between md:px-8 lg:absolute lg:left-[2.8%] lg:top-[76.3%] lg:m-0 lg:justify-start lg:gap-[1.1vw] lg:rounded-none lg:bg-transparent lg:p-0 lg:shadow-none">
         {stats.map((s, i) => (
           <React.Fragment key={s.label}>
             {i > 0 && (

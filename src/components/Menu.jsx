@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AOS from "aos";
 import assets from "../assets/assets";
 import { useCart } from "../context/CartContext";
 
@@ -79,7 +80,7 @@ const items = [
 const MenuCard = ({ item, onAddToCart, onOpen }) => (
   <section
     onClick={() => onOpen(item)}
-    className="flex cursor-pointer items-center gap-4 rounded-2xl bg-white p-4 shadow-md transition-transform hover:-translate-y-0.5 hover:shadow-lg"
+    className="flex h-full cursor-pointer items-center gap-4 rounded-2xl bg-white p-4 shadow-md transition-transform hover:-translate-y-0.5 hover:shadow-lg"
   >
     <img
       src={item.image}
@@ -117,6 +118,11 @@ const Menu = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const visible = active === "all" ? items : items.filter((i) => i.category === active);
 
+  // New cards mount when the tab changes: tell AOS to scan them
+  useEffect(() => {
+    AOS.refreshHard();
+  }, [active]);
+
   const handleModalAdd = (item, qty) => {
     addToCart(item, qty);
   };
@@ -143,7 +149,7 @@ const Menu = () => {
       />
 
   
-      <div className="px-4 pt-10 pl-36 sm:pl-48 sm:pr-44 md:pl-64 md:pt-16">
+      <div data-aos="fade-up" className="px-4 pt-10 pl-36 sm:pl-48 sm:pr-44 md:pl-64 md:pt-16">
         <h2 className="mt-1 font-['Anton'] text-5xl leading-none tracking-wide text-white md:text-4xl lg:text-5xl xl:text-6xl">Our Menu</h2>
         <p className=" mt-5 max-w-xs text-base leading-snug md:text-lg">
           Wood-fired in our authentic Neapolitan oven, using imported
@@ -152,7 +158,7 @@ const Menu = () => {
       </div>
 
     
-      <div className="mt-8 flex flex-wrap gap-3 px-4 md:mt-10 md:pl-64">
+      <div data-aos="fade-up" data-aos-delay="100" className="mt-8 flex flex-wrap gap-3 px-4 md:mt-10 md:pl-64">
         {tabs.map(({ id, label, Icon }) => {
           const isActive = active === id;
           return (
@@ -176,13 +182,19 @@ const Menu = () => {
 
       {/* cards */}
       <div className=" mx-auto mt-10 grid max-w-6xl gap-5 px-4 md:grid-cols-2 lg:grid-cols-3">
-        {visible.map((item) => (
-          <MenuCard
+        {visible.map((item, index) => (
+          <div
             key={item.id}
-            item={item}
-            onAddToCart={(i) => addToCart(i, 1)}
-            onOpen={setSelectedItem}
-          />
+            data-aos="fade-up"
+            data-aos-delay={(index % 3) * 100}
+            className="h-full"
+          >
+            <MenuCard
+              item={item}
+              onAddToCart={(i) => addToCart(i, 1)}
+              onOpen={setSelectedItem}
+            />
+          </div>
         ))}
       </div>
 
